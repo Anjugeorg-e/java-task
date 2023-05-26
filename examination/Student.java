@@ -34,7 +34,7 @@ public class Student {
         int num = questionPaper.questionList.size();
         for (int i = 0; i < num; i++) {
             Scanner input = new Scanner(System.in);
-            System.out.print("enter answer for question - " + questionPaper.questionList.get(i) + ": ");
+            System.out.print("Enter answer for question - " + questionPaper.questionList.get(i) + ": ");
             int num1 = input.nextInt();
             this.enteredAnswers.add(num1);
         }
@@ -47,6 +47,7 @@ public class Student {
     public void setCorrectAnswerCount(int correctAnswerCount) {
         this.correctAnswerCount = correctAnswerCount;
     }
+
 
     @Override
     public String toString() {
