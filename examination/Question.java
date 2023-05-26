@@ -1,0 +1,54 @@
+package examination;
+
+import java.util.HashMap;
+
+public class Question {
+    private double markforCorrectAnswer;
+    private String question;
+    private int correctOption;
+    HashMap<Integer, String> options = new HashMap<Integer, String>();
+
+    public Question(double markforCorrectAnswer, String question) {
+        this.markforCorrectAnswer = markforCorrectAnswer;
+        this.question = question;
+    }
+
+    public double getMarkforCorrectAnswer() {
+        return markforCorrectAnswer;
+    }
+
+    public void setMarkforCorrectAnswer(double markforCorrectAnswer) {
+        this.markforCorrectAnswer = markforCorrectAnswer;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public int getCorrectOption() {
+        return correctOption;
+    }
+
+    public void setOptions(int OptionNumber, String option) {
+        this.options.put(OptionNumber, option);
+    }
+
+    public HashMap<Integer, String> getOptions() {
+        return options;
+    }
+
+    public void setCorrectOption(int option) {
+        this.correctOption = option;
+    }
+
+    @Override
+    public String toString() {
+        return "Question [markforCorrectAnswer=" + markforCorrectAnswer + ", question=" + question + ", options="
+                + options + "]";
+    }
+
+}
