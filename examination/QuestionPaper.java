@@ -3,7 +3,7 @@ package examination;
 import java.util.ArrayList;
 
 public class QuestionPaper {
-    private double totlMark;
+    private double totalMark;
     private Subject subject;
     ArrayList<Question> questionList = new ArrayList<>();
 
@@ -11,12 +11,12 @@ public class QuestionPaper {
         this.subject = subject;
     }
 
-    public double getTotlMark() {
-        return totlMark;
+    public double getTotalMark() {
+        return totalMark;
     }
 
-    public void setTotlMark(double totlMark) {
-        this.totlMark = totlMark;
+    public void setTotalMark(double totalMark) {
+        this.totalMark = totalMark;
     }
 
     public Subject getSubject() {
@@ -48,8 +48,13 @@ public class QuestionPaper {
         for (int i = 0; i < questionList.size(); i++) {
             total += questionList.get(i).getMarkforCorrectAnswer();
         }
-        this.setTotlMark(total);
-        return this.getTotlMark();
+        this.setTotalMark(total);
+        return this.getTotalMark();
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionPaper [totalMark=" + totalMark + ", subject=" + subject + "]";
     }
 
 }

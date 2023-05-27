@@ -7,7 +7,7 @@ import org.junit.Test;
 public class QuestionTest {
     @Test
     public void testGetCorrectOption() {
-        Question q1 = new Question(4, " SI unit of work and energy?");
+        Question q1 = new Question(4, " SI unit of work and energy?",1);
         q1.setCorrectOption(1);
         q1.setOptions(1, "joule");
         q1.setOptions(2, "watt");
@@ -19,7 +19,7 @@ public class QuestionTest {
 
     @Test
     public void testGetMarkforCorrectAnswer() {
-        Question q1 = new Question(4, " SI unit of work and energy?");
+        Question q1 = new Question(4, " SI unit of work and energy?",2);
         Double expected = 4.0;
         Double got = q1.getMarkforCorrectAnswer();
         assertEquals(expected, got);

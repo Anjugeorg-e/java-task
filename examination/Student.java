@@ -1,13 +1,10 @@
 package examination;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Student {
     private String studentName;
     private int age;
-    private int correctAnswerCount;
-    ArrayList<Integer> enteredAnswers = new ArrayList<>();
 
     public Student(String studentName, int age) {
         this.studentName = studentName;
@@ -30,24 +27,15 @@ public class Student {
         this.age = age;
     }
 
-    public void attendExam(QuestionPaper questionPaper) {
-        int num = questionPaper.questionList.size();
-        for (int i = 0; i < num; i++) {
+    public void attendExam(Examination examination,QuestionPaper questionPaper, AnswerSheet sheet) {
+        int numberOfQuestions= questionPaper.questionList.size();
+        for (int i = 0; i < numberOfQuestions; i++) {
             Scanner input = new Scanner(System.in);
             System.out.print("Enter answer for question - " + questionPaper.questionList.get(i) + ": ");
-            int num1 = input.nextInt();
-            this.enteredAnswers.add(num1);
+            int selectedOption = input.nextInt();
+            sheet.setAnswerSet(questionPaper.questionList.get(i).getQuestionNumber(), selectedOption);
         }
     }
-
-    public int getCorrectAnswerCount() {
-        return correctAnswerCount;
-    }
-
-    public void setCorrectAnswerCount(int correctAnswerCount) {
-        this.correctAnswerCount = correctAnswerCount;
-    }
-
 
     @Override
     public String toString() {

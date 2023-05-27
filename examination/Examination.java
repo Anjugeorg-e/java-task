@@ -1,24 +1,15 @@
 package examination;
 
 public class Examination {
+    private int examinationCode;
 
-    public Examination() {
+    public Examination(int examinationCode) {
+        this.examinationCode = examinationCode;
     }
 
-    public double conductExam(Student student, QuestionPaper questionPaper) {
-        int totalQuestionsCount = questionPaper.questionList.size();
-        int correctAnswerCount = 0;
-        double score = 0;
-        student.attendExam(questionPaper);
-        for (int i = 0; i < totalQuestionsCount; i++) {
-            if (student.enteredAnswers.get(i) == questionPaper.questionList.get(i).getCorrectOption()) {
-                correctAnswerCount += 1;
-                score = score + questionPaper.questionList.get(i).getMarkforCorrectAnswer();
-            } else {
-                score = score - 1;
-            }
-        }
-        student.setCorrectAnswerCount(correctAnswerCount);
-        return score;
+    public void conductExam(Student student, QuestionPaper questionPaper, AnswerSheet sheet) {
+        student.attendExam(this,questionPaper, sheet);
+
     }
+
 }

@@ -6,11 +6,13 @@ public class Question {
     private double markforCorrectAnswer;
     private String question;
     private int correctOption;
+    private int questionNumber;
     HashMap<Integer, String> options = new HashMap<Integer, String>();
 
-    public Question(double markforCorrectAnswer, String question) {
+    public Question(double markforCorrectAnswer, String question, int questionNumber) {
         this.markforCorrectAnswer = markforCorrectAnswer;
         this.question = question;
+        this.questionNumber = questionNumber;
     }
 
     public double getMarkforCorrectAnswer() {
@@ -43,6 +45,14 @@ public class Question {
 
     public void setCorrectOption(int option) {
         this.correctOption = option;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void setQuestionNumber(int questionNumber) {
+        this.questionNumber = questionNumber;
     }
 
     @Override
