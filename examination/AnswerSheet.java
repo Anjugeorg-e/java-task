@@ -54,11 +54,10 @@ public class AnswerSheet {
         return obtainedScore;
     }
 
-    public void setObtainedScore(double ObtainedScore) {
+    public void setObtainedScore(double obtainedScore) {
         this.obtainedScore = obtainedScore;
     }
 
-    @Override
     public String toString() {
         return "AnswerSheet [student=" + student + ", questionPaper=" + questionPaper + ", obtainedScore="
                 + obtainedScore + ", correctAnswerCount=" + correctAnswerCount + ", examination=" + examination + "]";

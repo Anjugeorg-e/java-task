@@ -52,11 +52,12 @@ public class Main {
 
                 Examination exam = new Examination(234);
                 AnswerSheet scoreCard = new AnswerSheet(sam, set1, exam);
+                AnswerSheet score1 = new AnswerSheet(sam, set1, exam);
 
                 exam.conductExam(sam, set1, scoreCard);
                 scoreCard.resultCalculation();
                 System.out.println("correct answers count: " + scoreCard.getCorrectAnswerCount());
-
+               
                 alpha.addNewResult(scoreCard);
                 System.out.println(alpha.examResults);
 
