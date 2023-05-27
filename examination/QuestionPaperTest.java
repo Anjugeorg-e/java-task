@@ -7,14 +7,14 @@ public class QuestionPaperTest {
     @Test
     public void testFindTotalMarkInQuestionPaper() {
         Subject physics = new Subject("physics");
-        Question q1 = new Question(4, " SI unit of work and energy?",1);
+        Question q1 = new Question(4, " SI unit of work and energy?",1,physics);
         q1.setCorrectOption(1);
         q1.setOptions(1, "joule");
         q1.setOptions(2, "watt");
         q1.setOptions(3, "farad");
         q1.setOptions(4, "ohm");
 
-        Question q2 = new Question(4, "charle's law is based on? ",2);
+        Question q2 = new Question(4, "charle's law is based on? ",2,physics);
         q2.setCorrectOption(3);
         q2.setOptions(1, "solid");
         q2.setOptions(2, "liquid");

@@ -15,28 +15,28 @@ public class Main {
                 alpha.addSubjectToCoachingCenter(physics);
                 alpha.addSubjectToCoachingCenter(chemistry);
 
-                Question q1 = new Question(4, " SI unit of work and energy?", 1);
+                Question q1 = new Question(4, " SI unit of work and energy?", 1,physics);
                 q1.setOptions(1, "joule");
                 q1.setOptions(2, "watt");
                 q1.setOptions(3, "farad");
                 q1.setOptions(4, "ohm");
                 q1.setCorrectOption(1);
 
-                Question q2 = new Question(4, "charle's law is based on? ", 2);
+                Question q2 = new Question(4, "charle's law is based on? ", 2,physics);
                 q2.setOptions(1, "solid");
                 q2.setOptions(2, "liquid");
                 q2.setOptions(3, "gas");
                 q2.setOptions(4, "none of the above");
                 q2.setCorrectOption(3);
 
-                Question q3 = new Question(4, "ball pen function in the principal of? ", 3);
+                Question q3 = new Question(4, "ball pen function in the principal of? ", 3,physics);
                 q3.setOptions(1, "viscocity");
                 q3.setOptions(2, "gravity");
                 q3.setOptions(3, "capilarity");
                 q3.setOptions(4, "atmospheric pressure");
                 q3.setCorrectOption(2);
 
-                Question q4 = new Question(4, "x-rays cannot pass through what?", 4);
+                Question q4 = new Question(4, "x-rays cannot pass through what?", 4,physics);
                 q4.setOptions(1, "skin");
                 q4.setOptions(2, "bone");
                 q4.setOptions(3, "meat");
