@@ -8,7 +8,7 @@ public class AnswerSheet {
     private double obtainedScore;
     private int correctAnswerCount;
     private Examination examination;
-    HashMap<Integer, Integer> optionschosenByStudent = new HashMap<Integer, Integer>();
+    HashMap<Integer, Integer> optionsChosenByStudent = new HashMap<Integer, Integer>();
 
     public AnswerSheet(Student student, QuestionPaper questionPaper, Examination examination) {
         this.student = student;
@@ -17,11 +17,11 @@ public class AnswerSheet {
     }
 
     public void setoptionschosenByStudent(int questionNum, Integer option) {
-        this.optionschosenByStudent.put(questionNum, option);
+        this.optionsChosenByStudent.put(questionNum, option);
     }
 
     public HashMap<Integer, Integer> getOptionsChosenByStudent() {
-        return optionschosenByStudent;
+        return optionsChosenByStudent;
     }
 
     public int getCorrectAnswerCount() {
@@ -36,8 +36,8 @@ public class AnswerSheet {
         int correctAnswerCount = 0;
         double score = 0;
         for (Question question : questionPaper.questionList) {
-            if (this.optionschosenByStudent.containsKey(question.getQuestionNumber())) {
-                if (question.getCorrectOption() == this.optionschosenByStudent.get(question.getQuestionNumber())) {
+            if (this.optionsChosenByStudent.containsKey(question.getQuestionNumber())) {
+                if (question.getCorrectOption() == this.optionsChosenByStudent.get(question.getQuestionNumber())) {
                     correctAnswerCount += 1;
                     score = score + question.getMarkforCorrectAnswer();
                 } else {
