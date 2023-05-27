@@ -6,7 +6,7 @@ public class Coachingcenter {
     private String coachingCenterName;
     ArrayList<Student> studentList = new ArrayList<>();
     ArrayList<Subject> subjectList = new ArrayList<>();
-    ArrayList<AnswerSheet>valuationResults = new ArrayList<>();
+    ArrayList<AnswerSheet>examResults = new ArrayList<>();
 
     public Coachingcenter(String coachingCenterName) {
         this.coachingCenterName = coachingCenterName;
@@ -31,7 +31,7 @@ public class Coachingcenter {
     }
 
     public void addNewResult(AnswerSheet sheet){
-        valuationResults.add(sheet);
+        examResults.add(sheet);
     }
 
 }

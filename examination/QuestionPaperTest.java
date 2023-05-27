@@ -25,7 +25,7 @@ public class QuestionPaperTest {
         set1.addQuestion(q2);
 
         Double expected = 8.0;
-        Double got = set1.findTotalMarkInQuestionPaper();
+        Double got = set1.findTotalMarkOfQuestionPaper();
         assertEquals(expected, got);
 
     }

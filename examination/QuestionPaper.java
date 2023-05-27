@@ -43,7 +43,7 @@ public class QuestionPaper {
         questionList.remove(question);
     }
 
-    public double findTotalMarkInQuestionPaper() {
+    public double findTotalMarkOfQuestionPaper() {
         double total = 0;
         for (int i = 0; i < questionList.size(); i++) {
             total += questionList.get(i).getMarkforCorrectAnswer();
@@ -56,5 +56,7 @@ public class QuestionPaper {
     public String toString() {
         return "QuestionPaper [totalMark=" + totalMark + ", subject=" + subject + "]";
     }
+
+   
 
 }

@@ -5,21 +5,23 @@ import java.util.HashMap;
 public class AnswerSheet {
     private Student student;
     private QuestionPaper questionPaper;
-    private double scoreData;
+    private double obtainedScore;
     private int correctAnswerCount;
-    HashMap<Integer, Integer> answerSheetOfStudent = new HashMap<Integer, Integer>();
+    private Examination examination;
+    HashMap<Integer, Integer> optionschosenByStudent = new HashMap<Integer, Integer>();
 
-    public AnswerSheet(Student student, QuestionPaper questionPaper) {
+    public AnswerSheet(Student student, QuestionPaper questionPaper, Examination examination) {
         this.student = student;
         this.questionPaper = questionPaper;
+        this.examination = examination;
     }
 
-    public void setAnswerSet(int questionNUm, Integer option) {
-        this.answerSheetOfStudent.put(questionNUm, option);
+    public void setoptionschosenByStudent(int questionNum, Integer option) {
+        this.optionschosenByStudent.put(questionNum, option);
     }
 
-    public HashMap<Integer, Integer> getuserEnteredQuestionAnswerpair() {
-        return answerSheetOfStudent;
+    public HashMap<Integer, Integer> getOptionsChosenByStudent() {
+        return optionschosenByStudent;
     }
 
     public int getCorrectAnswerCount() {
@@ -30,37 +32,36 @@ public class AnswerSheet {
         this.correctAnswerCount = correctAnswerCount;
     }
 
-    public double ResultCalculation() {
-
-        System.out.println(answerSheetOfStudent);
+    public double resultCalculation() {
         int correctAnswerCount = 0;
         double score = 0;
-        for (Question ques : questionPaper.questionList) {
-            if (this.answerSheetOfStudent.containsKey(ques.getQuestionNumber())) {
-                if (ques.getCorrectOption() == this.answerSheetOfStudent.get(ques.getQuestionNumber())) {
+        for (Question question : questionPaper.questionList) {
+            if (this.optionschosenByStudent.containsKey(question.getQuestionNumber())) {
+                if (question.getCorrectOption() == this.optionschosenByStudent.get(question.getQuestionNumber())) {
                     correctAnswerCount += 1;
-                    score = score + ques.getMarkforCorrectAnswer();
+                    score = score + question.getMarkforCorrectAnswer();
                 } else {
                     score = score - 1;
                 }
             }
         }
         this.setCorrectAnswerCount(correctAnswerCount);
-        this.setScoreData(score);
+        this.setObtainedScore(score);
         return score;
     }
 
-    public double getScoreData() {
-        return scoreData;
+    public double getObtainedScore() {
+        return obtainedScore;
     }
 
-    public void setScoreData(double scoreData) {
-        this.scoreData = scoreData;
+    public void setObtainedScore(double ObtainedScore) {
+        this.obtainedScore = obtainedScore;
     }
 
     @Override
     public String toString() {
-        return "Valuation [student=" + student + ", questionPaper=" + questionPaper + ", scoreData=" + scoreData + "]";
+        return "AnswerSheet [student=" + student + ", questionPaper=" + questionPaper + ", obtainedScore="
+                + obtainedScore + ", correctAnswerCount=" + correctAnswerCount + ", examination=" + examination + "]";
     }
 
 }

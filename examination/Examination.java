@@ -12,4 +12,10 @@ public class Examination {
 
     }
 
+    @Override
+    public String toString() {
+        return "Examination [examinationCode=" + examinationCode + "]";
+    }
+
+    
 }

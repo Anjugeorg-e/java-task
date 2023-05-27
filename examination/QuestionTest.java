@@ -24,4 +24,12 @@ public class QuestionTest {
         Double got = q1.getMarkforCorrectAnswer();
         assertEquals(expected, got);
     }
+
+    @Test
+    public void testGetQuestionNumber(){
+        Question q1 = new Question(4, " SI unit of work and energy?",2);
+        int expected = 2;
+        int got = q1.getQuestionNumber();
+        assertEquals(expected, got);
+    }
 }

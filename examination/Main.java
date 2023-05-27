@@ -44,22 +44,21 @@ public class Main {
                 q4.setCorrectOption(2);
 
                 QuestionPaper set1 = new QuestionPaper(physics);
-                set1.addQuestion(q2);
                 set1.addQuestion(q1);
-                set1.addQuestion(q4);
+                set1.addQuestion(q2);
                 set1.addQuestion(q3);
-                System.out.println("Total marks in set1: " + set1.findTotalMarkInQuestionPaper());
+                set1.addQuestion(q4);
+                System.out.println("Total marks in set1: " + set1.findTotalMarkOfQuestionPaper());
 
                 Examination exam = new Examination(234);
-                AnswerSheet scoreSheet = new AnswerSheet(sam, set1);
-                
-                // anu.attendExam(set1);
-                exam.conductExam(sam, set1, scoreSheet);
-                
-                scoreSheet.ResultCalculation();
-                System.out.println("correct answers count: " + scoreSheet.getCorrectAnswerCount());
-                alpha.addNewResult(scoreSheet);
-                System.out.println(alpha.valuationResults);
+                AnswerSheet scoreCard = new AnswerSheet(sam, set1, exam);
+
+                exam.conductExam(sam, set1, scoreCard);
+                scoreCard.resultCalculation();
+                System.out.println("correct answers count: " + scoreCard.getCorrectAnswerCount());
+
+                alpha.addNewResult(scoreCard);
+                System.out.println(alpha.examResults);
 
         }
 }
