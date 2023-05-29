@@ -10,14 +10,6 @@ public class Question {
     private Subject subject;
     HashMap<Integer, String> options = new HashMap<Integer, String>();
 
-    
-
-    // public Question(double markforCorrectAnswer, String question, int questionNumber) {
-    //     this.markforCorrectAnswer = markforCorrectAnswer;
-    //     this.question = question;
-    //     this.questionNumber = questionNumber;
-    // }
-
     public Question(double markforCorrectAnswer, String question, int questionNumber, Subject subject) {
         this.markforCorrectAnswer = markforCorrectAnswer;
         this.question = question;
