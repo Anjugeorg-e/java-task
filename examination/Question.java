@@ -7,7 +7,7 @@ public class Question {
     private String question;
     private int correctOption;
     private int questionNumber;
-    private Subject sunject;
+    private Subject subject;
     HashMap<Integer, String> options = new HashMap<Integer, String>();
 
     
@@ -18,11 +18,11 @@ public class Question {
     //     this.questionNumber = questionNumber;
     // }
 
-    public Question(double markforCorrectAnswer, String question, int questionNumber, Subject sunject) {
+    public Question(double markforCorrectAnswer, String question, int questionNumber, Subject subject) {
         this.markforCorrectAnswer = markforCorrectAnswer;
         this.question = question;
         this.questionNumber = questionNumber;
-        this.sunject = sunject;
+        this.subject = subject;
     }
 
     public double getMarkforCorrectAnswer() {

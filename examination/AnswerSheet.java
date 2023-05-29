@@ -16,7 +16,7 @@ public class AnswerSheet {
         this.examination = examination;
     }
 
-    public void setoptionschosenByStudent(int questionNum, Integer option) {
+    public void setOptionsChosenByStudent(int questionNum, Integer option) {
         this.optionsChosenByStudent.put(questionNum, option);
     }
 

@@ -55,10 +55,13 @@ public class Main {
                 AnswerSheet score1 = new AnswerSheet(sam, set1, exam);
 
                 exam.conductExam(sam, set1, scoreCard);
+                exam.conductExam(sam, set1, score1);
                 scoreCard.resultCalculation();
+                score1.resultCalculation();
                 System.out.println("correct answers count: " + scoreCard.getCorrectAnswerCount());
                
                 alpha.addNewResult(scoreCard);
+                alpha.addNewResult(score1);
                 System.out.println(alpha.examResults);
 
         }

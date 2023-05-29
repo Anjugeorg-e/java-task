@@ -27,13 +27,13 @@ public class Student {
         this.age = age;
     }
 
-    public void attendExam(Examination examination, QuestionPaper questionPaper, AnswerSheet sheet) {
+    public void attendExam(QuestionPaper questionPaper, AnswerSheet sheet) {
         int numberOfQuestions = questionPaper.questionList.size();
         for (int i = 0; i < numberOfQuestions; i++) {
             Scanner input = new Scanner(System.in);
             System.out.print("Enter answer for question - " + questionPaper.questionList.get(i) + ": ");
             int selectedOption = input.nextInt();
-            sheet.setoptionschosenByStudent(questionPaper.questionList.get(i).getQuestionNumber(), selectedOption);
+            sheet.setOptionsChosenByStudent(questionPaper.questionList.get(i).getQuestionNumber(), selectedOption);
         }
     }
 

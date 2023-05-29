@@ -8,7 +8,7 @@ public class Examination {
     }
 
     public void conductExam(Student student, QuestionPaper questionPaper, AnswerSheet sheet) {
-        student.attendExam(this,questionPaper, sheet);
+        student.attendExam(questionPaper, sheet);
 
     }
 
