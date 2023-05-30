@@ -37,11 +37,12 @@ public class Restaurant {
     }
 
     public void assignDeliveryBoyForOrder(Customer customer, DeliveryBoy name) {
-        for (Order order : this.orders) {
-            if (order.orderedItemList.contains(customer)) {
+        if (!customer.orderList.isEmpty()) {
+            for (Order order : customer.orderList) {
                 order.setDeliveryBoy(name);
             }
         }
+
     }
 
     @Override
