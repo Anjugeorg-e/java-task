@@ -1,58 +1,45 @@
 package restauranttask;
 
-import java.util.ArrayList;
+enum orderStatus {
 
-public class Order {
-    private String orderStatus;
-    private double totalPrice;
-    private Customer customer;
-    ArrayList<OrderItem> orderedItemList = new ArrayList<>();
+    ORDER_PLACED("ordered"),
+    ORDER_DELIVERED("order delivered");
+
+    private String value;
+
+    private orderStatus(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
+
+public class Order extends PurchaseCart {
+
+    private String statusOfOrder;
 
     public Order(Customer customer) {
-        this.customer = customer;
+        super(customer);
+
     }
 
     public String getOrderStatus() {
-        return orderStatus;
+        return statusOfOrder;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public double getTotalPrice() {
-        double total = 0;
-        for (OrderItem item : this.orderedItemList) {
-            total += item.getQuantity() * item.getItem().getPrice();
-        }
-        return total;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public ArrayList<OrderItem> getOrderedItemList() {
-        return orderedItemList;
-    }
-
-    public void setOrderedItemList(ArrayList<OrderItem> orderedItemList) {
-        this.orderedItemList = orderedItemList;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setOrderStatus(String statusOfOrder) {
+        this.statusOfOrder = statusOfOrder;
     }
 
     @Override
     public String toString() {
-        return "Order [orderStatus=" + orderStatus + ", totalPrice=" + this.getTotalPrice() + ", customer="
-                + this.getCustomer()
-                + ", orderedItemList=" + orderedItemList + "]";
+        return "Order [orderStatus=" + statusOfOrder + ", totalPrice=" + this.getTotalPrice() + ", customer="
+                + this.getCustomer() + "selectedItems=" + this.getSelectedItems() + "]";
     }
-
 }

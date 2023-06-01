@@ -40,5 +40,4 @@ public class Restaurant {
     public String toString() {
         return "Restaurant [restaurantName=" + restaurantName + ", menu=" + menu + "]";
     }
-
 }

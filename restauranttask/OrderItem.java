@@ -29,5 +29,4 @@ public class OrderItem {
     public String toString() {
         return "SelectedItem [item=" + item + ", quantity=" + quantity + "]";
     }
-
 }

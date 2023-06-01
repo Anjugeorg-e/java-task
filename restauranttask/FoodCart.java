@@ -1,26 +1,20 @@
 package restauranttask;
 
-import java.util.ArrayList;
-
-public class FoodCart {
-    private Customer customer;
-    ArrayList<OrderItem>selectedItems = new ArrayList<>();
+public class FoodCart extends PurchaseCart {
 
     public FoodCart(Customer customer) {
-        this.customer = customer;
+        super(customer);
     }
 
-    public double getTotalPrice() {
-        double total = 0;
-        for (OrderItem item : this.selectedItems) {
-            total += item.getQuantity() * item.getItem().getPrice();
+    public void addItemToCart(FoodItem item, int quantity, Menu menu) {
+        if (menu.foodItems.contains(item)) {
+            OrderItem itemName = new OrderItem(item, quantity);
+            this.selectedItems.add(itemName);
         }
-        return total;
     }
 
     @Override
     public String toString() {
         return "FoodCart [selectedItem=" + selectedItems + "]";
     }
-
 }

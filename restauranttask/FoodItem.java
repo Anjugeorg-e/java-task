@@ -1,25 +1,47 @@
 package restauranttask;
 
+enum Portion {
+    HALF("half"),
+    FULL("full"),
+    QUARTER("quarter");
+
+    private String value;
+
+    private Portion(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+}
+
 public class FoodItem {
-    private String foodName;
+    private String name;
     private boolean isVeg;
     private double price;
+
     private String portion;
 
-    public FoodItem(String foodName, boolean isVeg, double price, String portion) {
-        this.foodName = foodName;
+    public FoodItem(String name, boolean isVeg, double price, String portion) {
+        this.name = name;
         this.isVeg = isVeg;
         this.price = price;
         this.portion = portion;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getname() {
+        return name;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+    public void setname(String name) {
+        this.name = name;
     }
+
     public double getPrice() {
         return price;
     }
@@ -36,20 +58,16 @@ public class FoodItem {
         this.isVeg = isVeg;
     }
 
-    public String getPortion() {
-        return portion;
+    public String getName() {
+        return name;
     }
 
-    public void setPortion(String portion) {
-        this.portion = portion;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "FoodItem [foodName=" + foodName + ", isVeg=" + isVeg + ", price=" + price + ", portion=" + portion
-                + "]";
+        return "FoodItem [name=" + name + ", isVeg=" + isVeg + ", price=" + price + ", portion=" + portion + "]";
     }
-
-   
-
 }

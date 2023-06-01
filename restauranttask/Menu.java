@@ -3,7 +3,6 @@ package restauranttask;
 import java.util.ArrayList;
 
 public class Menu {
-
     ArrayList<FoodItem> foodItems = new ArrayList<>();
 
     public void addItemToMenu(FoodItem item) {
@@ -14,7 +13,4 @@ public class Menu {
     public String toString() {
         return "Menu [foodItems=" + foodItems + "]";
     }
-
-    
-   
 }

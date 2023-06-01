@@ -48,23 +48,13 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addItemToCart(FoodItem item, int quantity, Menu menu) {
-        for (FoodItem items : menu.foodItems) {
-            if (items == item) {
-                OrderItem itemName = new OrderItem(item, quantity);
-                this.cart.selectedItems.add(itemName);
-            }
-        }
-    }
-
-    public Order orderItem(Restaurant restaurant) {
+    public Order createOrder(Restaurant restaurant) {
         Order order = new Order(this);
-        order.orderedItemList = this.cart.selectedItems;
-        order.setOrderStatus("ordered");
+        order.selectedItems = this.cart.selectedItems;
+        order.setOrderStatus(orderStatus.ORDER_PLACED.getValue());
         this.orderList.add(order);
         restaurant.orders.add(order);
         return order;
-
     }
 
     @Override
@@ -72,5 +62,4 @@ public class Customer {
         return "Customer [customerName=" + customerName + ", address=" + address + ", phoneNumber="
                 + phoneNumber + "]";
     }
-
 }
