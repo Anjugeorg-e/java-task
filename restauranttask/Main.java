@@ -7,9 +7,9 @@ public class Main {
         Restaurant Ittans = new Restaurant("Ittans", menu);
 
         Customer anu = new Customer("Anu", 23, "ABC(H),edoor", "67809888");
-        Customer sam = new Customer("sam", 25, "XYZ(H),payam", "78556778");
+        Customer sam = new Customer("sam", 24, "Agh(H),hj", "678966964");
 
-        FoodItem chickenNoodles = new FoodItem("Chicken Noodles",false, 290, "full");
+        FoodItem chickenNoodles = new FoodItem("Chicken Noodles", false, 290, "full");
         menu.addItemToMenu(chickenNoodles);
         FoodItem halfButterChicken = new FoodItem("Butter Chicken", false, 130, "half");
         menu.addItemToMenu(halfButterChicken);
@@ -18,41 +18,26 @@ public class Main {
         FoodItem vegNoodles = new FoodItem("veg Noodles", true, 160, "full");
         menu.addItemToMenu(vegNoodles);
         FoodItem meals = new FoodItem("meals", true, 130, "full");
-        menu.addItemToMenu(meals);
+        menu.addItemToMenu(meals);        
+        
+        anu.addItemToCart(meals, 2,menu);
+        anu.addItemToCart(chickenNoodles, 1,menu);
+        anu.orderItem(Ittans);
+        System.out.println("order list of anu : " +anu.orderList);
+        System.out.println(" ");
 
-        
-        FoodCart anufoodcart = new FoodCart(anu);
+        sam.addItemToCart(meals, 1,menu);
+        sam.addItemToCart(vegNoodles, 2,menu);
+        sam.orderItem(Ittans);
+        System.out.println("order list of sam : " +sam.orderList);
+        System.out.println(" ");
 
-        OrderItem mealsOrder = new OrderItem(meals, 2);
-        OrderItem noodleOrder = new OrderItem(chickenNoodles, 1);
-    
-        anu.orderItem(menu, mealsOrder, Ittans);
-        anu.orderItem(menu, noodleOrder, Ittans);
+        System.out.println(anu.getCart());
+        System.out.println(anu.getCart().getTotalPrice());
+        System.out.println(sam.getCart());
+        System.out.println(sam.getCart().getTotalPrice());
         
-        
-        
-        // OrderItem mealsSecondOrder = new OrderItem(meals, 1, anu);
-        // anu.addFoodToCart(menu, anufoodcart, noodleOrder);
-        // anu.addFoodToCart(menu, anufoodcart, mealsOrder);
-        // anu.addFoodToCart(menu, anufoodcart, mealsSecondOrder);
-        // anu.orderItem(Ittans, anufoodcart);
-        
-        // FoodCart samfoodcart = new FoodCart(sam);
-        // OrderItem vegNoodlesOrder = new OrderItem(vegNoodles, 2, sam);
-        // sam.addFoodToCart(menu, samfoodcart, vegNoodlesOrder);
-        // sam.orderItem(Ittans, samfoodcart);
-
-        // System.out.println("total price in anu's cart: " + anufoodcart.getTotalPrice());
-        // System.out.println("total price in sam's cart: " + samfoodcart.getTotalPrice());
-
-        // System.out.println("Latest orders in restaurant:" + Ittans.orders);
-
-        
-        System.out.println("Menu: " + Ittans.getMenu());
-        System.out.println("Anu: " + anu.orderList);
-        
-        System.out.println("updated order list :" + Ittans.orders);
-
+        System.out.println("Ittans orders: " + Ittans.orders);
         
     }
 }

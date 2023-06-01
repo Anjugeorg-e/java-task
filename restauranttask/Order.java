@@ -6,8 +6,11 @@ public class Order {
     private String orderStatus;
     private double totalPrice;
     private Customer customer;
-
     ArrayList<OrderItem> orderedItemList = new ArrayList<>();
+
+    public Order(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getOrderStatus() {
         return orderStatus;
@@ -47,7 +50,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order [orderStatus=" + orderStatus + ", totalPrice=" + totalPrice + ", customer=" + customer
+        return "Order [orderStatus=" + orderStatus + ", totalPrice=" + this.getTotalPrice() + ", customer="
+                + this.getCustomer()
                 + ", orderedItemList=" + orderedItemList + "]";
     }
 
