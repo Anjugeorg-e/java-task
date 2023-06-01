@@ -4,15 +4,13 @@ import java.util.ArrayList;
 
 public class Customer {
     private String customerName;
-    private int age;
     private String address;
     private String phoneNumber;
     private FoodCart cart;
     ArrayList<Order> orderList = new ArrayList<>();
 
-    public Customer(String customerName, int age, String address, String phoneNumber) {
+    public Customer(String customerName, String address, String phoneNumber) {
         this.customerName = customerName;
-        this.age = age;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.cart = new FoodCart(this);
@@ -24,14 +22,6 @@ public class Customer {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getAddress() {
@@ -79,7 +69,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [customerName=" + customerName + ", age=" + age + ", address=" + address + ", phoneNumber="
+        return "Customer [customerName=" + customerName +  ", address=" + address + ", phoneNumber="
                 + phoneNumber + "]";
     }
 

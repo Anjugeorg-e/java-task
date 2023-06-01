@@ -6,8 +6,8 @@ public class Main {
         Menu menu = new Menu();
         Restaurant Ittans = new Restaurant("Ittans", menu);
 
-        Customer anu = new Customer("Anu", 23, "ABC(H),edoor", "67809888");
-        Customer sam = new Customer("sam", 24, "Agh(H),hj", "678966964");
+        Customer anu = new Customer("Anu", "ABC(H),edoor", "67809888");
+        Customer sam = new Customer("sam", "Agh(H),hj", "678966964");
 
         FoodItem chickenNoodles = new FoodItem("Chicken Noodles", false, 290, "full");
         menu.addItemToMenu(chickenNoodles);
