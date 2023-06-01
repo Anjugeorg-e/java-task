@@ -1,14 +1,14 @@
 package restauranttask;
 
-public class Item {
+public class FoodItem {
     private String foodName;
-    private String category;
+    private boolean isVeg;
     private double price;
-    private double portion;
+    private String portion;
 
-    public Item(String foodName, String category, double price, double portion) {
+    public FoodItem(String foodName, boolean isVeg, double price, String portion) {
         this.foodName = foodName;
-        this.category = category;
+        this.isVeg = isVeg;
         this.price = price;
         this.portion = portion;
     }
@@ -20,15 +20,6 @@ public class Item {
     public void setFoodName(String foodName) {
         this.foodName = foodName;
     }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -37,17 +28,28 @@ public class Item {
         this.price = price;
     }
 
-    public double getPortion() {
+    public boolean isVeg() {
+        return isVeg;
+    }
+
+    public void setVeg(boolean isVeg) {
+        this.isVeg = isVeg;
+    }
+
+    public String getPortion() {
         return portion;
     }
 
-    public void setPortion(double portion) {
+    public void setPortion(String portion) {
         this.portion = portion;
     }
 
     @Override
     public String toString() {
-        return "Item [foodName=" + foodName + ", category=" + category + ", price=" + price + "]";
+        return "FoodItem [foodName=" + foodName + ", isVeg=" + isVeg + ", price=" + price + ", portion=" + portion
+                + "]";
     }
+
+   
 
 }

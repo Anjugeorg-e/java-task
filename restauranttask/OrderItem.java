@@ -1,21 +1,19 @@
 package restauranttask;
 
-public class SelectedItem {
-    private Item item;
+public class OrderItem {
+    private FoodItem item;
     private int quantity;
-    private Customer customer;
-
-    public SelectedItem(Item item, int quantity, Customer customer) {
+    
+    public OrderItem(FoodItem item, int quantity) {
         this.item = item;
         this.quantity = quantity;
-        this.customer = customer;
     }
 
-    public Item getItem() {
+    public FoodItem getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(FoodItem item) {
         this.item = item;
     }
 

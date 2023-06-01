@@ -36,14 +36,6 @@ public class Restaurant {
         this.orders = orders;
     }
 
-    public void assignDeliveryBoyForOrder(Customer customer, DeliveryBoy name) {
-        if (!customer.orderList.isEmpty()) {
-            for (Order order : customer.orderList) {
-                order.setDeliveryBoy(name);
-            }
-        }
-    }
-
     @Override
     public String toString() {
         return "Restaurant [restaurantName=" + restaurantName + ", menu=" + menu + "]";

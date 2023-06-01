@@ -48,24 +48,17 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addFoodToCart(Menu menu, FoodCart cart, SelectedItem items) {
-        if (items.getItem().getCategory() == "veg" && menu.vegList.contains(items.getItem())) {
-            cart.selectedItems.add(items);
-        } else if (items.getItem().getCategory() == "nonveg" && menu.nonVegList.contains(items.getItem())) {
-            cart.selectedItems.add(items);
-        } else {
-            System.out.println("item is not available");
-        }
-    }
-
-    public Order orderItem(Restaurant restaurant, FoodCart cart) {
-        Order order = new Order();
-        order.orderedItemList.add(cart);
-        order.setOrderStatus("ordered");
-        order.setTotalPrice(cart.getTotalPrice());
-        this.orderList.add(order);
-        restaurant.orders.add(order);
-        return order;
+    public Order orderItem(Menu menu, OrderItem item, Restaurant restaurant) {
+        // if(menu.foodItems.contains(item)){
+            Order order = new Order();
+            order.orderedItemList.add(item);
+            order.setOrderStatus("ordered");
+            order.setTotalPrice(order.getTotalPrice());
+            order.setCustomer(this);
+            restaurant.orders.add(order);
+            this.orderList.add(order);
+            return order;
+        //}
     }
 
     @Override
