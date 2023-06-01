@@ -49,8 +49,8 @@ public class Customer {
     }
 
     public void addItemToCart(FoodItem item, int quantity, Menu menu) {
-        for(FoodItem items: menu.foodItems){
-            if(items.getFoodName() == item.getFoodName()){
+        for (FoodItem items : menu.foodItems) {
+            if (items == item) {
                 OrderItem itemName = new OrderItem(item, quantity);
                 this.cart.selectedItems.add(itemName);
             }
@@ -69,7 +69,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [customerName=" + customerName +  ", address=" + address + ", phoneNumber="
+        return "Customer [customerName=" + customerName + ", address=" + address + ", phoneNumber="
                 + phoneNumber + "]";
     }
 
