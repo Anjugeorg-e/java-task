@@ -9,15 +9,15 @@ public class Main {
         Customer anu = new Customer("Anu", "ABC(H)", "67809888");
         Customer sam = new Customer("sam", "Agh(H)", "678966964");
 
-        FoodItem chickenNoodles = new FoodItem("Chicken Noodles", false, 290,Portion.FULL.getValue());
+        FoodItem chickenNoodles = new FoodItem("Chicken Noodles", false, 290,Portion.FULL);
         menu.addItemToMenu(chickenNoodles);
-        FoodItem halfButterChicken = new FoodItem("Butter Chicken", false, 130,Portion.HALF.getValue()  );
+        FoodItem halfButterChicken = new FoodItem("Butter Chicken", false, 130,Portion.HALF);
         menu.addItemToMenu(halfButterChicken);
-        FoodItem chilliChicken = new FoodItem("Chilli chicken", false, 240, Portion.FULL.getValue());
+        FoodItem chilliChicken = new FoodItem("Chilli chicken", false, 240, Portion.FULL);
         menu.addItemToMenu(chilliChicken);
-        FoodItem vegNoodles = new FoodItem("veg Noodles", true, 160, Portion.HALF.getValue());
+        FoodItem vegNoodles = new FoodItem("veg Noodles", true, 160, Portion.HALF);
         menu.addItemToMenu(vegNoodles);
-        FoodItem meals = new FoodItem("meals", true, 130, Portion.FULL.getValue());
+        FoodItem meals = new FoodItem("meals", true, 130, Portion.FULL);
         menu.addItemToMenu(meals);        
 
         System.out.println("Ittans menu: " +menu);

@@ -51,7 +51,7 @@ public class Customer {
     public Order createOrder(Restaurant restaurant) {
         Order order = new Order(this);
         order.selectedItems = this.cart.selectedItems;
-        order.setOrderStatus(orderStatus.ORDER_PLACED.getValue());
+        order.setOrderStatus(orderStatus.ORDER_PLACED);
         this.orderList.add(order);
         restaurant.orders.add(order);
         return order;

@@ -1,23 +1,10 @@
 package restauranttask;
 
+
 enum Portion {
-    HALF("half"),
-    FULL("full"),
-    QUARTER("quarter");
-
-    private String value;
-
-    private Portion(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
+    HALF,
+    FULL,
+    QUARTER
 }
 
 public class FoodItem {
@@ -25,9 +12,9 @@ public class FoodItem {
     private boolean isVeg;
     private double price;
 
-    private String portion;
+    private Portion portion;
 
-    public FoodItem(String name, boolean isVeg, double price, String portion) {
+    public FoodItem(String name, boolean isVeg, double price, Portion portion) {
         this.name = name;
         this.isVeg = isVeg;
         this.price = price;

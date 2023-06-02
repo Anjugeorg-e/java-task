@@ -2,38 +2,24 @@ package restauranttask;
 
 enum orderStatus {
 
-    ORDER_PLACED("ordered"),
-    ORDER_DELIVERED("order delivered");
-
-    private String value;
-
-    private orderStatus(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
+    ORDER_PLACED,
+    ORDER_DELIVERED
 }
 
 public class Order extends PurchaseCart {
 
-    private String statusOfOrder;
+    private orderStatus statusOfOrder;
 
     public Order(Customer customer) {
         super(customer);
 
     }
 
-    public String getOrderStatus() {
+    public orderStatus getOrderStatus() {
         return statusOfOrder;
     }
 
-    public void setOrderStatus(String statusOfOrder) {
+    public void setOrderStatus(orderStatus statusOfOrder) {
         this.statusOfOrder = statusOfOrder;
     }
 
