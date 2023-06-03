@@ -1,9 +1,7 @@
 package instagramtask;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Profile {
@@ -16,14 +14,13 @@ public class Profile {
     private int followingCount;
     private User user;
     private Feed feed;
-    private Instagram instagram;
+    private Inbox inbox;
 
     ArrayList<Profile> followers = new ArrayList<>();
     ArrayList<Profile> following = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
     ArrayList<Reel> reels = new ArrayList<>();
-    ArrayList<Story> stories = new ArrayList<>();
-    ArrayList<Post> receivedPostsFromOtherProfiles = new ArrayList<>();
+    ArrayList<Story> stories = new ArrayList<>();    
 
     public Profile(String profileName, String bio, String profilePictureurl, User user) {
         this.profileName = profileName;
@@ -31,6 +28,7 @@ public class Profile {
         this.profilePictureurl = profilePictureurl;
         this.user = user;
         this.feed = new Feed(this);
+        this.inbox = new Inbox(this);
     }
 
     public String getprofileName() {
@@ -79,6 +77,14 @@ public class Profile {
 
     public void setcountOfContents(int countOfContents) {
         this.countOfContents = countOfContents;
+    }
+
+    public Inbox getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(Inbox inbox) {
+        this.inbox = inbox;
     }
 
     public ArrayList<Profile> getFollowers() {

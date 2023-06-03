@@ -37,12 +37,12 @@ public class User {
     }
 
     public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
-        for(Profile profile: instagram.instagramAccounts){
-            if(profile.getProfileName() == profileName){
+        for (Profile profile : instagram.instagramAccounts) {
+            if (profile.getProfileName() == profileName) {
                 return false;
             }
         }
-        this.profile = new Profile(profileName, bio, ProfilePictureurl,this);
+        this.profile = new Profile(profileName, bio, ProfilePictureurl, this);
         instagram.instagramAccounts.add(profile);
         return true;
     }

@@ -20,9 +20,28 @@ public class Feed {
         }
     }
 
+
+    public void sharePost(Profile profileToWhichSharing, int contentId, String userName){
+        for(Post post: this.postsOfFollowingProfiles){
+            if(post.getContentId() == contentId && post.getProfile().getProfileName() ==userName){
+               profileToWhichSharing.getInbox().receivedPosts.add(post);
+            }
+        }
+    }
+
+    public void shareReel(Profile profileToWhichSharing, int contentId){
+        for(Reel reel: this.reelsOfFollowingProfiles){
+            if(reel.getContentId() == contentId){
+               profileToWhichSharing.getInbox().receivedReels.add(reel);
+            }
+        }
+    }
+
+
+    
     @Override
     public String toString() {
-        return "Feed [Feed of Profileowner=" + this.profile.getprofileName() + ",posts=" + postsOfFollowingProfiles
+        return "Feed [Feed for profile =" + this.profile.getprofileName() + ",posts=" + postsOfFollowingProfiles
                 + ", reels" + reelsOfFollowingProfiles + ", stories="
                 + storiesOfFollowingProfiles + "]";
     }

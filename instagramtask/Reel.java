@@ -1,6 +1,5 @@
 package instagramtask;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class Reel extends Content{
@@ -31,6 +30,6 @@ public class Reel extends Content{
 
     @Override
     public String toString() {
-        return "Reel [ Profile=" + super.getProfile().getprofileName() + ", videoUrl=" + videoUrl +  ", content=" + super.getCaption() + ", itemId=" +super.getContentId()+  ", views=" + views + ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ",postedDate=" + super.getPostedDate()+"]";
+        return "Reel [ Profile=" + super.getProfile().getprofileName() + ", videoUrl=" + videoUrl +  ", caption=" + super.getCaption() + ", ContentId=" +super.getContentId()+  ", views=" + views + ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ",postedDate=" + super.getPostedDate()+"]";
     }
 }

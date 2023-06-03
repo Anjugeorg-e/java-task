@@ -2,14 +2,14 @@ package instagramtask;
 
 import java.time.LocalDate;
 
-public class Story{
+public class Story {
 
     private Profile profile;
     private String contentUrl;
     private String caption;
     private LocalDate createdDate;
     private int storyId;
-    
+
     public Story(Profile profile, String contentUrl, String caption, LocalDate date, int storyId) {
         this.profile = profile;
         this.contentUrl = contentUrl;
