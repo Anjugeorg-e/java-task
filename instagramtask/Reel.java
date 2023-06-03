@@ -1,12 +1,15 @@
 package instagramtask;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class Reel extends Content{
 
     private String videoUrl;
     private int views;
 
-    public Reel(String videoUrl, String caption, Profile Profile, int id) {
-        super(caption, Profile, id);
+    public Reel(String videoUrl, String caption, Profile Profile, int contentid, LocalDate postedDate) {
+        super(caption, Profile, contentid, postedDate);
         this.videoUrl = videoUrl;
     }
 
@@ -22,16 +25,12 @@ public class Reel extends Content{
         return views;
     }
 
-    public void setViews(int views) {
-        this.views = views;
-    }
-
     public void setView(){
         views ++;
     }
 
     @Override
     public String toString() {
-        return "Reel [ Profile=" + super.getProfile().getUserName() + ", videoUrl=" + videoUrl +  ", content=" + super.getCaption() + ", itemId=" +super.getId()+  ", views=" + views + ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ "]";
+        return "Reel [ Profile=" + super.getProfile().getprofileName() + ", videoUrl=" + videoUrl +  ", content=" + super.getCaption() + ", itemId=" +super.getContentId()+  ", views=" + views + ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ",postedDate=" + super.getPostedDate()+"]";
     }
 }

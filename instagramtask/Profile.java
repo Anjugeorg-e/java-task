@@ -1,48 +1,44 @@
 package instagramtask;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Profile {
 
-    private String userName;
-    private String fullName;
+    private String profileName;
     private String bio;
     private String profilePictureurl;
-    private int contentCount;
+    private int countOfContents;
     private int followerCount;
     private int followingCount;
     private User user;
     private Feed feed;
+    private Instagram instagram;
 
     ArrayList<Profile> followers = new ArrayList<>();
     ArrayList<Profile> following = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
     ArrayList<Reel> reels = new ArrayList<>();
     ArrayList<Story> stories = new ArrayList<>();
+    ArrayList<Post> receivedPostsFromOtherProfiles = new ArrayList<>();
 
-    public Profile(String userName, String fullName, String bio, String profilePictureurl, User user) {
-        this.userName = userName;
-        this.fullName = fullName;
+    public Profile(String profileName, String bio, String profilePictureurl, User user) {
+        this.profileName = profileName;
         this.bio = bio;
         this.profilePictureurl = profilePictureurl;
         this.user = user;
         this.feed = new Feed(this);
     }
 
-    public String getUserName() {
-        return userName;
+    public String getprofileName() {
+        return profileName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setprofileName(String profileName) {
+        this.profileName = profileName;
     }
 
     public String getBio() {
@@ -78,11 +74,11 @@ public class Profile {
     }
 
     public int getContentCount() {
-        return contentCount;
+        return countOfContents;
     }
 
-    public void setContentCount(int contentCount) {
-        this.contentCount = contentCount;
+    public void setcountOfContents(int countOfContents) {
+        this.countOfContents = countOfContents;
     }
 
     public ArrayList<Profile> getFollowers() {
@@ -101,79 +97,20 @@ public class Profile {
         this.following = following;
     }
 
-    public void follow(Profile instagramProfile) {
-        this.following.add(instagramProfile);
-        this.followingCount++;
+    public String getProfileName() {
+        return profileName;
     }
 
-    public void unfollow(Profile instagramProfile) {
-        this.following.remove(instagramProfile);
-        this.followingCount--;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
-    public boolean acceptRequest(Profile instagramProfile) {
-        this.followers.add(instagramProfile);
-        this.followerCount++;
-        return true;
+    public User getUser() {
+        return user;
     }
 
-    public void sendFollowRequest(Profile instagramProfile) {
-        instagramProfile.following.add(this);
-        instagramProfile.followingCount++;
-    }
-
-    public void createPost(String imageUrl, String caption, int contentId) {
-        Post newPost = new Post(imageUrl, caption, this, contentId);
-        this.posts.add(newPost);
-        this.contentCount++;
-    }
-
-    public void createReel(String videoUrl, String caption, int contentId) {
-        Reel reel = new Reel(videoUrl, caption, this, contentId);
-        this.reels.add(reel);
-        this.contentCount++;
-    }
-
-    public void likeReel(Profile profile, int id) {
-        for (Reel reel : profile.reels) {
-            reel.setView();
-            if (reel.getId() == id) {
-                reel.setLikes();
-                reel.setLikedProfiles(this);
-            }
-        }
-    }
-
-    public void likePost(Profile profile, int id) {
-        for (Post post : profile.posts) {
-            if (post.getId() == id) {
-                post.setLikes();
-                post.setLikedProfiles(this);
-            }
-        }
-    }
-
-    public void commentReel(Profile profile, int id, String comments) {
-        for (Reel reel : profile.reels) {
-            if (reel.getId() == id) {
-                Comment comment = new Comment(this, comments);
-                reel.setComments(comment);
-            }
-        }
-    }
-
-    public void commentPost(Profile profile, int id, String comments) {
-        for (Post post : profile.posts) {
-            if (post.getId() == id) {
-                Comment comment = new Comment(this, comments);
-                post.setComments(comment);
-            }
-        }
-    }
-
-    public void createStory(String caption, String contentUrl) {
-        Story story = new Story(this,caption, contentUrl);
-        this.stories.add(story);
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public ArrayList<Post> getPosts() {
@@ -200,18 +137,170 @@ public class Profile {
         this.stories = stories;
     }
 
-    public Feed getFeed() {
-        return feed;
-    }
-
     public void setFeed(Feed feed) {
         this.feed = feed;
     }
 
+    public void follow(Profile instagramProfile) {
+        this.following.add(instagramProfile);
+        this.followingCount++;
+    }
+
+    public void unfollow(Profile instagramProfile) {
+        this.following.remove(instagramProfile);
+        this.followingCount--;
+    }
+
+    public boolean acceptRequest(Profile instagramProfile) {
+        this.followers.add(instagramProfile);
+        this.followerCount++;
+        return true;
+    }
+
+    public boolean createPost(String imageUrl, String caption, int contentId, LocalDate postedDate) {
+        for (Post post : this.posts) {
+            if (post.getContentId() == contentId) {
+                return false;
+            }
+        }
+        Post newPost = new Post(imageUrl, caption, this, contentId, postedDate);
+        this.posts.add(newPost);
+        this.countOfContents++;
+        return true;
+    }
+
+    public void likePost(Profile profile, int id) {
+        for (Post post : profile.posts) {
+            if (post.getContentId() == id) {
+                post.setLikes();
+                post.setlikesDidByProfiles(this);
+            }
+        }
+    }
+
+    public void editPost(String caption, int contentId) {
+        for (Post post : this.posts) {
+            if (post.getContentId() == contentId) {
+                post.setCaption(caption);
+            }
+        }
+    }
+
+    public boolean deletePost(int contentId) {
+        for (Post post : this.posts) {
+            if (post.getContentId() == contentId) {
+                this.posts.remove(post);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void commentPost(Profile profile, int id, String comments) {
+        for (Post post : profile.posts) {
+            if (post.getContentId() == id) {
+                Comment comment = new Comment(this, comments);
+                post.setComments(comment);
+            }
+        }
+    }
+
+    public boolean addTag(String tag, int contentId) {
+        for (Post post : this.posts) {
+            if (post.getContentId() == contentId) {
+                post.setTags(tag);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean createReel(String videoUrl, String caption, int contentId, LocalDate postedDate) {
+        for (Reel reel : this.reels) {
+            if (reel.getContentId() == contentId) {
+                return false;
+            }
+        }
+        Reel reel = new Reel(videoUrl, caption, this, contentId, postedDate);
+        this.reels.add(reel);
+        this.countOfContents++;
+        return true;
+    }
+
+    public void likeReel(Profile profile, int id) {
+        for (Reel reel : profile.reels) {
+            reel.setView();
+            if (reel.getContentId() == id) {
+                reel.setLikes();
+                reel.setlikesDidByProfiles(this);
+            }
+        }
+    }
+
+    public void editReel(String caption, int contentId) {
+        for (Reel reel : this.reels) {
+            if (reel.getContentId() == contentId) {
+                reel.setCaption(caption);
+            }
+        }
+    }
+
+    public boolean deleteReel(int contentId) {
+        for (Reel reel : this.reels) {
+            if (reel.getContentId() == contentId) {
+                this.reels.remove(reel);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void commentReel(Profile profile, int id, String comments) {
+        for (Reel reel : profile.reels) {
+            if (reel.getContentId() == id) {
+                Comment comment = new Comment(this, comments);
+                reel.setComments(comment);
+            }
+        }
+    }
+
+    public void createStory(String caption, String contentUrl, LocalDate date, int storyId) {
+        LocalDate dateAfter1day = date.plusDays(1);
+        Story story = new Story(this, caption, contentUrl, date, storyId);
+        this.stories.add(story);
+        if (LocalDate.now().compareTo(dateAfter1day) == 0) {
+            this.stories.remove(story);
+        }
+    }
+
+    public void deleteStory(int storyId) {
+        for (Story story : this.stories) {
+            if (story.getStoryId() == storyId) {
+                this.stories.remove(story);
+            }
+        }
+    }
+
+    public Feed getFeed() {
+        Collections.sort(this.feed.postsOfFollowingProfiles, new PostSorting().reversed());
+        Collections.sort(this.feed.reelsOfFollowingProfiles, new ReelSorting().reversed());
+        return this.feed;
+    }
+
+    public boolean searchProfile(String userName, Instagram instagram) {
+        for (Profile profile : instagram.instagramAccounts) {
+            if (profile.getProfileName() == userName) {
+                System.out.println("profile:" + profile);
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "Profile [userName=" + userName + ", bio=" + bio + ", profilePictureurl="
-                + profilePictureurl + ", postCount=" + contentCount + ", followerCount=" + followerCount
-                + ", followingCount=" + followingCount + "]";
+        return "Profile [profileName=" + profileName + ", bio=" + bio + ", profilePictureurl=" + profilePictureurl
+                + ", contentCount=" + countOfContents + ", followerCount=" + followerCount + ", followingCount="
+                + followingCount + "]";
     }
 }

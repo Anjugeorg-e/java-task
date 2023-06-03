@@ -1,19 +1,23 @@
 package instagramtask;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Content {
-    private String caption;
     private Profile Profile;
-    private int id;
+    private String caption;
+    private int contentid;
     private int likes;
-    ArrayList<Profile> likedProfiles = new ArrayList<>();
-    ArrayList<Comment>comments = new ArrayList<>();
+    private Instagram instagram;
+    private LocalDate postedDate;
+    ArrayList<Profile> likesDidByProfiles = new ArrayList<>();
+    ArrayList<Comment> comments = new ArrayList<>();
 
-    public Content(String caption, instagramtask.Profile profile, int id) {
+    public Content(String caption, Profile profile, int contentid, LocalDate postedDate) {
         this.caption = caption;
         Profile = profile;
-        this.id = id;
+        this.contentid = contentid;
+        this.postedDate = postedDate;
     }
 
     public String getCaption() {
@@ -32,12 +36,12 @@ public class Content {
         this.Profile = Profile;
     }
 
-    public int getId() {
-        return id;
+    public int getContentId() {
+        return contentid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int contentid) {
+        this.contentid = contentid;
     }
 
     public int getLikes() {
@@ -48,12 +52,12 @@ public class Content {
         likes++;
     }
 
-    public ArrayList<Profile> getLikedProfiles() {
-        return likedProfiles;
+    public ArrayList<Profile> likesDidByProfiles() {
+        return likesDidByProfiles;
     }
 
-    public void setLikedProfiles(Profile profile) {
-        this.likedProfiles.add(profile);
+    public void setlikesDidByProfiles(Profile profile) {
+        this.likesDidByProfiles.add(profile);
     }
 
     public ArrayList<Comment> getComments() {
@@ -64,10 +68,17 @@ public class Content {
         this.comments.add(comment);
     }
 
+    public LocalDate getPostedDate() {
+        return postedDate;
+    }
+
+    public void setPostedDate(LocalDate postedDate) {
+        this.postedDate = postedDate;
+    }
+
     @Override
     public String toString() {
-        return "Content [caption=" + caption + ", Profile=" + Profile.getUserName() + ", itemId=" + id + ", likes="
-                + likes
-                + ", comments=" + comments + "]";
+        return "Content [Profile=" + Profile.getProfileName() + ", caption=" + caption + ", contentid=" + contentid
+                + ", likes=" + likes + ", comments=" + comments + "]";
     }
 }

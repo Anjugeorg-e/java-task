@@ -1,11 +1,14 @@
 package instagramtask;
 
+import java.time.LocalDate;
+
 public class Post extends Content {
 
     private String imageUrl;
+    private String tags;
 
-    public Post(String imageUrl, String caption, Profile Profile, int contentid) {
-        super(caption, Profile, contentid);
+    public Post(String imageUrl, String caption, Profile Profile, int contentid, LocalDate postedDate) {
+        super(caption, Profile, contentid, postedDate);
         this.imageUrl = imageUrl;
     }
 
@@ -17,9 +20,17 @@ public class Post extends Content {
         this.imageUrl = imageUrl;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+    
     @Override
     public String toString() {
-        return "Post [ Profile=" + super.getProfile().getUserName() + ", imageUrl=" + imageUrl+  ", content=" + super.getCaption() + ", itemId=" +super.getId()+ ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ "]";
+        return "Post [ Profile=" + super.getProfile().getprofileName() + ", imageUrl=" + imageUrl+  ", caption=" + super.getCaption() + ", contentId=" +super.getContentId()+ ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ", tags=" + this.getTags()+ ", postedDate= " + super.getPostedDate() + "]";
     }
     
 }

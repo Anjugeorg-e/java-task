@@ -36,13 +36,13 @@ public class User {
         this.email = email;
     }
 
-    public boolean createProfile(String userName, String fullName, String bio, String ProfilePictureurl, Instagram instagram) {
+    public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
         for(Profile profile: instagram.instagramAccounts){
-            if(profile.getUserName() == userName){
+            if(profile.getProfileName() == profileName){
                 return false;
             }
         }
-        this.profile = new Profile(userName, fullName, bio, ProfilePictureurl,this);
+        this.profile = new Profile(profileName, bio, ProfilePictureurl,this);
         instagram.instagramAccounts.add(profile);
         return true;
     }
