@@ -36,6 +36,14 @@ public class User {
         this.email = email;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
         for (Profile profile : instagram.instagramAccounts) {
             if (profile.getProfileName() == profileName) {
@@ -45,14 +53,6 @@ public class User {
         this.profile = new Profile(profileName, bio, ProfilePictureurl, this);
         instagram.instagramAccounts.add(profile);
         return true;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     @Override

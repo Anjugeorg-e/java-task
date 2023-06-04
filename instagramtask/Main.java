@@ -1,8 +1,6 @@
 package instagramtask;
 
-import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) throws NullPointerException {
@@ -30,6 +28,9 @@ public class Main {
         anu_profile.follow(luca_profile);
         luca_profile.acceptRequest(anu_profile);
         luca_profile.follow(anu_profile);
+        luca_profile.follow(sam_profile);
+        sam_profile.acceptRequest(luca_profile);
+        sam_profile.follow(luca_profile);
 
         System.out.println(anu_profile);
 
@@ -41,6 +42,8 @@ public class Main {
         sam_profile.createReel("https://computer.mp4", "dark series", 4, LocalDate.of(2023, 05, 25));
         sam_profile.createReel("https://village.mp4", "beautyy", 7, LocalDate.of(2023, 05, 29));
 
+        anu_profile.createPost("https://cat.jpg", "cat", 10, LocalDate.of(2023, 06, 02));
+
         luca_profile.createPost("https://book.jpg", "java basics", 8, LocalDate.of(2023, 06, 02));
 
         System.out.println("total contents in sam's profile: " + sam_profile.getContentCount());
@@ -49,6 +52,7 @@ public class Main {
         System.out.println("posts: " + sam_profile.posts);
         System.out.println("reels: " + sam_profile.reels);
 
+        anu_profile.likeReel(sam_profile, 3);
         anu_profile.likeReel(sam_profile, 3);
         anu_profile.commentReel(sam_profile, 3, "awesome");
         System.out.println("reels: " + sam_profile.reels);
@@ -77,13 +81,13 @@ public class Main {
         System.out.println(anu_profile.getFeed());
 
         anu_profile.getFeed().sharePost(sam_profile, 1, "sam_samuel");
-        anu_profile.getFeed().sharePost(sam_profile, 3, "sam_samel");
-        anu_profile.getFeed().sharePost(sam_profile, 8, "luca_jacob");
+        luca_profile.getFeed().sharePost(sam_profile, 2, "sam_samuel");
+        anu_profile.getFeed().sharePost(sam_profile, 3, "sam_samuel");
+        System.out.println();
+        
+        System.out.println(anu_profile.getFeed());
         System.out.println();
         System.out.println(sam_profile.getInbox());
-
-        System.out.println();
-        System.out.println(anu_profile.getFeed());
 
     }
 }

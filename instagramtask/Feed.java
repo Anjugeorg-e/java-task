@@ -20,7 +20,6 @@ public class Feed {
         }
     }
 
-
     public void sharePost(Profile profileToWhichSharing, int contentId, String userName){
         for(Post post: this.postsOfFollowingProfiles){
             if(post.getContentId() == contentId && post.getProfile().getProfileName() ==userName){
@@ -37,12 +36,10 @@ public class Feed {
         }
     }
 
-
-    
     @Override
     public String toString() {
-        return "Feed [Feed for profile =" + this.profile.getprofileName() + ",posts=" + postsOfFollowingProfiles
-                + ", reels" + reelsOfFollowingProfiles + ", stories="
+        return "Feed [profile=" + profile + ", postsOfFollowingProfiles=" + postsOfFollowingProfiles
+                + ", reelsOfFollowingProfiles=" + reelsOfFollowingProfiles + ", storiesOfFollowingProfiles="
                 + storiesOfFollowingProfiles + "]";
     }
 }

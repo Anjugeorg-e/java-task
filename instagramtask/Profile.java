@@ -235,8 +235,9 @@ public class Profile {
 
     public void likeReel(Profile profile, int id) {
         for (Reel reel : profile.reels) {
-            reel.setView();
             if (reel.getContentId() == id) {
+                System.out.println("liked");
+                reel.setView();
                 reel.setLikes();
                 reel.setlikesDidByProfiles(this);
             }

@@ -1,10 +1,12 @@
 package instagramtask;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inbox {
     private Profile profile;
     ArrayList<Post> receivedPosts = new ArrayList<>();
+    HashMap<Profile, Post>receivedpost = new HashMap<Profile, Post>();
     ArrayList<Reel> receivedReels = new ArrayList<>();
 
     public Inbox(Profile profile) {
@@ -26,6 +28,14 @@ public class Inbox {
     public void setReceivedReels(ArrayList<Reel> receivedReels) {
         this.receivedReels = receivedReels;
     }
+
+    public HashMap<Profile, Post> getReceivedpost() {
+        return receivedpost;
+    }
+
+    public void setReceivedpost(Profile profile, Post post) {
+        this.receivedpost.put(profile, post);
+    }   
 
     @Override
     public String toString() {

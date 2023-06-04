@@ -25,7 +25,7 @@ public class Reel extends Content{
     }
 
     public void setView(){
-        views ++;
+        views += 1;
     }
 
     @Override

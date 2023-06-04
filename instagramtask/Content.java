@@ -8,7 +8,6 @@ public class Content {
     private String caption;
     private int contentid;
     private int likes;
-    private Instagram instagram;
     private LocalDate postedDate;
     ArrayList<Profile> likesDidByProfiles = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
