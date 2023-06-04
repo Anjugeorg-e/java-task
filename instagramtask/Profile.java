@@ -288,10 +288,15 @@ public class Profile {
         }
     }
 
+    
+    // public Feed getFeed() {
+    //     Collections.sort(this.feed.postsOfFollowingProfiles, new PostSorting().reversed());
+    //     Collections.sort(this.feed.reelsOfFollowingProfiles, new ReelSorting().reversed());
+    //     return this.feed;
+    // }
+
     public Feed getFeed() {
-        Collections.sort(this.feed.postsOfFollowingProfiles, new PostSorting().reversed());
-        Collections.sort(this.feed.reelsOfFollowingProfiles, new ReelSorting().reversed());
-        return this.feed;
+        return feed;
     }
 
     public boolean searchProfile(String userName, Instagram instagram) {
