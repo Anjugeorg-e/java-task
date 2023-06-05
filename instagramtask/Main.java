@@ -9,14 +9,17 @@ public class Main {
 
         User sam = new User("sam_samuel", "sam@123", "samsamuel@gmail.com");
         sam.createProfile("sam_samuel", "creating my own sunshine", "https://profilepic", instagram);
+        instagram.addUserToInstagram(sam);
         Profile sam_profile = sam.getProfile();
 
         User anu = new User("anu_james", "anu@123", "anu@gmail.com");
         anu.createProfile("anu_james", "blissful", "https://anuprofilepic", instagram);
+        instagram.addUserToInstagram(anu);
         Profile anu_profile = anu.getProfile();
 
         User luca = new User("luca_jacob", "luca123", "luca@gmail.com");
         luca.createProfile("luca_jacob", "weird life", "https://luca.png", instagram);
+        instagram.addUserToInstagram(luca);
         Profile luca_profile = luca.getProfile();
 
         System.out.println(instagram.instagramAccounts);
@@ -75,6 +78,9 @@ public class Main {
         System.out.println(anu_profile.getFeed());
         System.out.println();
         System.out.println(sam_profile.getInbox());
+
+        User john = new User("jo_james", "john@12", "johnffh@gmail.com");
+        System.out.println(john.setUserName("anu_james", instagram));
 
     }
 }

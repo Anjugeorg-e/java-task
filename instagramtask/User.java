@@ -16,8 +16,14 @@ public class User {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public boolean setUserName(String userName, Instagram instagram) {
+     for (User user : instagram.users) {
+            if (user.getUserName() == userName) {
+                return false;
+            }
+        }
         this.userName = userName;
+        return true;
     }
 
     public String getPassword() {
@@ -45,11 +51,6 @@ public class User {
     }
 
     public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
-        for (Profile profile : instagram.instagramAccounts) {
-            if (profile.getUser().userName == this.userName) {
-                return false;
-            }
-        }
         this.profile = new Profile(profileName, bio, ProfilePictureurl, this);
         instagram.instagramAccounts.add(profile);
         return true;
