@@ -16,23 +16,21 @@ public class Main {
         Profile anu_profile = anu.getProfile();
 
         User luca = new User("luca_jacob", "luca123", "luca@gmail.com");
-        luca.createProfile("luca_jacob", "weired life", "https://luca.png", instagram);
+        luca.createProfile("luca_jacob", "weird life", "https://luca.png", instagram);
         Profile luca_profile = luca.getProfile();
 
         System.out.println(instagram.instagramAccounts);
 
         sam_profile.follow(anu_profile);
         anu_profile.follow(sam_profile);
-        sam_profile.acceptRequest(anu_profile);
-        anu_profile.acceptRequest(sam_profile);
         anu_profile.follow(luca_profile);
-        luca_profile.acceptRequest(anu_profile);
         luca_profile.follow(anu_profile);
         luca_profile.follow(sam_profile);
-        sam_profile.acceptRequest(luca_profile);
         sam_profile.follow(luca_profile);
-
-        System.out.println(anu_profile);
+        sam_profile.acceptFollowRequest(anu_profile);
+        anu_profile.acceptFollowRequest(sam_profile);
+        luca_profile.acceptFollowRequest(anu_profile);
+        sam_profile.acceptFollowRequest(luca_profile);
 
         sam_profile.createPost("https:flower.jpg", "sunflower!!!", 1, LocalDate.of(2023, 05, 30));
         sam_profile.createPost("https:puppy.jpg", "puppies", 2, LocalDate.of(2023, 06, 01));
@@ -43,42 +41,31 @@ public class Main {
         sam_profile.createReel("https://village.mp4", "beautyy", 7, LocalDate.of(2023, 05, 29));
 
         anu_profile.createPost("https://cat.jpg", "cat", 10, LocalDate.of(2023, 06, 02));
-
         luca_profile.createPost("https://book.jpg", "java basics", 8, LocalDate.of(2023, 06, 02));
 
-        System.out.println("total contents in sam's profile: " + sam_profile.getContentCount());
         System.out.println(sam_profile);
-
         System.out.println("posts: " + sam_profile.posts);
         System.out.println("reels: " + sam_profile.reels);
 
         anu_profile.likeReel(sam_profile, 3);
-        anu_profile.likeReel(sam_profile, 3);
         anu_profile.commentReel(sam_profile, 3, "awesome");
-        System.out.println("reels: " + sam_profile.reels);
         anu_profile.likePost(sam_profile, 1);
         anu_profile.commentPost(sam_profile, 1, "wow!!");
         anu_profile.commentPost(sam_profile, 1, "beautiful..");
 
         System.out.println("posts: " + sam_profile.posts);
-
         System.out.println(anu_profile.getFollowingCount());
 
-        System.out.println();
         System.out.println("found or not: " + anu_profile.searchProfile("sam_samuel", instagram));
-
         sam_profile.addTag("#kerala,#feel the beauty", 1);
 
-        System.out.println(sam_profile.posts);
-        System.out.println(LocalDate.now());
-        System.out.println(sam_profile.stories);
         sam_profile.createStory("Happy birthday", "https://birthdaygirl.png", LocalDate.of(2023, 06, 03), 4);
         sam_profile.createStory("alone!!!", "https:alone.videomp4", LocalDate.of(2023, 06, 01), 5);
-
         System.out.println(sam_profile.stories);
+
         System.out.println();
+
         anu_profile.getFeed().addContentsToFeed();
-        System.out.println(anu_profile.getFeed());
 
         anu_profile.getFeed().sharePost(sam_profile, 1, "sam_samuel");
         luca_profile.getFeed().sharePost(sam_profile, 2, "sam_samuel");
@@ -88,8 +75,6 @@ public class Main {
         System.out.println(anu_profile.getFeed());
         System.out.println();
         System.out.println(sam_profile.getInbox());
-
-       
 
     }
 }

@@ -46,7 +46,7 @@ public class User {
 
     public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
         for (Profile profile : instagram.instagramAccounts) {
-            if (profile.getProfileName() == profileName) {
+            if (profile.getUser().userName == this.userName) {
                 return false;
             }
         }

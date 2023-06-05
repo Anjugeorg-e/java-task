@@ -157,7 +157,7 @@ public class Profile {
         this.followingCount--;
     }
 
-    public boolean acceptRequest(Profile instagramProfile) {
+    public boolean acceptFollowRequest(Profile instagramProfile) {
         this.followers.add(instagramProfile);
         this.followerCount++;
         return true;
@@ -289,15 +289,13 @@ public class Profile {
     }
 
     
-    // public Feed getFeed() {
-    //     Collections.sort(this.feed.postsOfFollowingProfiles, new PostSorting().reversed());
-    //     Collections.sort(this.feed.reelsOfFollowingProfiles, new ReelSorting().reversed());
-    //     return this.feed;
-    // }
-
     public Feed getFeed() {
-        return feed;
+        Collections.sort(this.feed.postsOfFollowingProfiles, new PostSorting().reversed());
+        Collections.sort(this.feed.reelsOfFollowingProfiles, new ReelSorting().reversed());
+        return this.feed;
     }
+
+
 
     public boolean searchProfile(String userName, Instagram instagram) {
         for (Profile profile : instagram.instagramAccounts) {
