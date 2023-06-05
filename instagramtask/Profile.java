@@ -147,14 +147,16 @@ public class Profile {
         this.feed = feed;
     }
 
-    public void follow(Profile instagramProfile) {
+    public boolean follow(Profile instagramProfile) {
         this.following.add(instagramProfile);
         this.followingCount++;
+        return true;
     }
 
-    public void unfollow(Profile instagramProfile) {
+    public boolean unfollow(Profile instagramProfile) {
         this.following.remove(instagramProfile);
         this.followingCount--;
+        return true;
     }
 
     public boolean acceptFollowRequest(Profile instagramProfile) {
@@ -184,12 +186,14 @@ public class Profile {
         }
     }
 
-    public void editPost(String caption, int contentId) {
+    public boolean editPost(String caption, int contentId) {
         for (Post post : this.posts) {
             if (post.getContentId() == contentId) {
                 post.setCaption(caption);
+                return true;
             }
         }
+        return false;
     }
 
     public boolean deletePost(int contentId) {
@@ -244,12 +248,14 @@ public class Profile {
         }
     }
 
-    public void editReel(String caption, int contentId) {
+    public boolean editReel(String caption, int contentId) {
         for (Reel reel : this.reels) {
             if (reel.getContentId() == contentId) {
                 reel.setCaption(caption);
+                return true;
             }
         }
+        return false;
     }
 
     public boolean deleteReel(int contentId) {
@@ -273,7 +279,8 @@ public class Profile {
 
     public void createStory(String caption, String contentUrl, LocalDate date, int storyId) {
         LocalDate dateAfter1day = date.plusDays(1);
-        Story story = new Story(this, caption, contentUrl, date, storyId);
+        // Story story = new Story(this, caption, contentUrl, date, storyId);
+        Story story = new Story(caption, this, storyId, date, contentUrl);
         this.stories.add(story);
         if (LocalDate.now().compareTo(dateAfter1day) == 0) {
             this.stories.remove(story);
@@ -282,7 +289,7 @@ public class Profile {
 
     public void deleteStory(int storyId) {
         for (Story story : this.stories) {
-            if (story.getStoryId() == storyId) {
+            if (story.getContentId() == storyId) {
                 this.stories.remove(story);
             }
         }

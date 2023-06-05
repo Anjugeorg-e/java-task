@@ -2,20 +2,13 @@ package instagramtask;
 
 import java.time.LocalDate;
 
-public class Story {
+public class Story extends Content {
 
-    private Profile profile;
     private String contentUrl;
-    private String caption;
-    private LocalDate createdDate;
-    private int storyId;
 
-    public Story(Profile profile, String contentUrl, String caption, LocalDate date, int storyId) {
-        this.profile = profile;
+    public Story(String caption, Profile profile, int contentid, LocalDate postedDate, String contentUrl) {
+        super(caption, profile, contentid, postedDate);
         this.contentUrl = contentUrl;
-        this.caption = caption;
-        this.createdDate = date;
-        this.storyId = storyId;
     }
 
     public String getcontentUrl() {
@@ -26,33 +19,9 @@ public class Story {
         this.contentUrl = contentUrl;
     }
 
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public int getStoryId() {
-        return storyId;
-    }
-
-    public void setStoryId(int storyId) {
-        this.storyId = storyId;
-    }
-
     @Override
     public String toString() {
-        return "Story [profile=" + profile + ", contentUrl=" + contentUrl + ", caption=" + caption + ", createdDate="
-                + createdDate + ", storyId=" + storyId + "]";
+        return "Story [ Profile=" + super.getProfile().getprofileName() + ",  caption=" + super.getCaption()
+                + ", contentId=" + super.getContentId() + ",postedDate= " + super.getPostedDate() + "]";
     }
 }

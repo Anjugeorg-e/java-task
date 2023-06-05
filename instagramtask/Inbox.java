@@ -29,14 +29,6 @@ public class Inbox {
         this.receivedReels = receivedReels;
     }
 
-    public HashMap<Profile, Post> getReceivedpost() {
-        return receivedpost;
-    }
-
-    public void setReceivedpost(Profile profile, Post post) {
-        this.receivedpost.put(profile, post);
-    }   
-
     @Override
     public String toString() {
         return "Inbox [profile=" + profile.getProfileName() + ", receivedPosts=" + receivedPosts + ", receivedReels=" + receivedReels

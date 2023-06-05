@@ -12,11 +12,11 @@ public class StoryTest {
         Instagram instagram = new Instagram();
         User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
         Anu.createProfile("anu_james", "own rules", "https://anuprofile.png", instagram);
-        Story anusstory = new Story(Anu.getProfile(), "https://environment.png", "environment", LocalDate.of(2023, 06, 05), 2);
-        assertEquals("environment", anusstory.getCaption());
+        Story anustory = new Story("environment", Anu.getProfile(), 1, LocalDate.of(2023, 03, 02), "https://hju.png");
+        assertEquals("environment", anustory.getCaption());
 
-        anusstory.setCaption("environment day");
-        assertEquals("environment day", anusstory.getCaption());
+        anustory.setCaption("environmentt");
+        assertEquals("environmentt", anustory.getCaption());
     }
 
     @Test
@@ -24,11 +24,11 @@ public class StoryTest {
         Instagram instagram = new Instagram();
         User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
         Anu.createProfile("anu_james", "own rules", "https://anuprofile.png", instagram);
-        Story anusstory = new Story(Anu.getProfile(), "https://environment.png", "environment", LocalDate.of(2023, 06, 05), 2);
-        assertEquals(LocalDate.of(2023, 06, 05), anusstory.getCreatedDate());
+        Story anusstory = new Story("environment", Anu.getProfile(), 1,  LocalDate.of(2023, 06, 05), "https://hju.png");
+        assertEquals(LocalDate.of(2023, 06, 05), anusstory.getPostedDate());
 
-        anusstory.setCreatedDate(LocalDate.of(2023, 06, 06));
-        assertEquals(LocalDate.of(2023, 06, 06), anusstory.getCreatedDate());
+        anusstory.setPostedDate(LocalDate.of(2023, 06, 06));
+        assertEquals(LocalDate.of(2023, 06, 06), anusstory.getPostedDate());
     }
 
     @Test
@@ -36,11 +36,11 @@ public class StoryTest {
         Instagram instagram = new Instagram();
         User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
         Anu.createProfile("anu_james", "own rules", "https://anuprofile.png", instagram);
-        Story anusstory = new Story(Anu.getProfile(), "https://environment.png", "environment", LocalDate.of(2023, 06, 05), 2);
-        assertEquals(2, anusstory.getStoryId());
+        Story anusstory = new Story("environment", Anu.getProfile(), 1,  LocalDate.of(2023, 06, 05), "https://hju.png");
+        assertEquals(1, anusstory.getContentId());
 
-        anusstory.setStoryId(5);
-        assertEquals(5, anusstory.getStoryId());
+        anusstory.setId(5);
+        assertEquals(5, anusstory.getContentId());
     }
 
     @Test
@@ -48,7 +48,10 @@ public class StoryTest {
         Instagram instagram = new Instagram();
         User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
         Anu.createProfile("anu_james", "own rules", "https://anuprofile.png", instagram);
-        Story anusstory = new Story(Anu.getProfile(), "https://environment.png", "environment", LocalDate.of(2023, 06, 05), 2);
+        Story anusstory = new Story("environment", Anu.getProfile(), 1,  LocalDate.of(2023, 06, 05), "https://environment.png");
         assertEquals("https://environment.png", anusstory.getcontentUrl());
-    }
+
+        anusstory.setcontentUrl("https://environmental.png");
+        assertEquals("https://environmental.png", anusstory.getcontentUrl());
+      }
 }

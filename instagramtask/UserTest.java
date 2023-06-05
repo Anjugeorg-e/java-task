@@ -11,15 +11,15 @@ public class UserTest {
         assertEquals(Anu.getEmail(), "anujames@gmail.com");
 
         Anu.setEmail("anujames12@gmail.com");
-        assertEquals(Anu.getEmail(), "anujames12@gmail.com");
+        assertEquals("anujames12@gmail.com", Anu.getEmail());
     }
 
     @Test
     public void testSetPassword() {
         User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
         assertEquals(Anu.getPassword(), "anu@1234");
-        Anu.setPassword("anu2111");
-        assertEquals(Anu.getPassword(), "anu2111");
+        Anu.setPassword("anu21");
+        assertEquals("anu@1234", Anu.getPassword());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class UserTest {
         instagram.addUserToInstagram(Anu);
         assertEquals(Anu.getUserName(), "anu_james");
         Anu.setUserName("anuzz", instagram);
-        assertEquals(Anu.getUserName(), "anuzz");
+        assertEquals("anuzz", Anu.getUserName());
 
         User sam = new User("sam_jo", "sam123", "sam@gmail.com");
         boolean actual=  sam.setUserName("anuzz", instagram);

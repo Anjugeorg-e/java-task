@@ -24,8 +24,9 @@ public class Post extends Content {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public boolean setTags(String tags) {
         this.tags = tags;
+        return true;
     }
     
     @Override

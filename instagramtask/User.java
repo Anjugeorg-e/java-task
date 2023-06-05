@@ -17,7 +17,7 @@ public class User {
     }
 
     public boolean setUserName(String userName, Instagram instagram) {
-     for (User user : instagram.users) {
+        for (User user : instagram.users) {
             if (user.getUserName() == userName) {
                 return false;
             }
@@ -31,7 +31,9 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if (password.length() > 6) {
+            this.password = password;
+        }
     }
 
     public String getEmail() {
