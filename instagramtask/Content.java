@@ -115,6 +115,11 @@ public class Content {
             for (Profile profile : this.getProfile().following) {
                 profile.getFeed().posts.remove(this);
             }
+        }else{
+            this.profile.stories.remove(this);
+            for (Profile profile : this.getProfile().following) {
+                profile.getFeed().stories.remove(this);
+            }
         }
     }
 

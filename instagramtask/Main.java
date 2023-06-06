@@ -79,8 +79,7 @@ public class Main {
         samreelOne.share(luca);
         samStoryOne.share(luca);
         System.out.println(luca.getInbox());
-        
-        samStoryOne.deleteStory();
+        samStoryOne.delete();
         System.out.println();
         System.out.println("Anu's feed: " + anu.getFeed());
 

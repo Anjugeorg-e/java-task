@@ -39,15 +39,6 @@ public class Story extends Content {
         return true;
     }
 
-    public void deleteStory() {
-        if (this.profile.stories.contains(this)) {
-            this.profile.stories.remove(this);
-        }
-        for (Profile profile : this.getProfile().following) {
-            profile.getFeed().stories.remove(this);
-        }
-    }
-
     @Override
     public String toString() {
         return "Story [ Profile=" + super.getProfile().getprofileName() + ",  caption=" + super.getCaption()
