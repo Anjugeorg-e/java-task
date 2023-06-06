@@ -54,7 +54,7 @@ public class User {
 
     public boolean createProfile(String profileName, String bio, String ProfilePictureurl, Instagram instagram) {
         this.profile = new Profile(profileName, bio, ProfilePictureurl, this);
-        instagram.instagramAccounts.add(profile);
+        instagram.instagramProfiles.add(profile);
         return true;
     }
 

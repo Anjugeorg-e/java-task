@@ -4,17 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Content {
-    private Profile Profile;
-    private String caption;
-    private int contentid;
-    private int likes;
-    private LocalDate postedDate;
+    protected Profile profile;
+    protected String caption;
+    protected int contentid;
+    protected int likes;
+    protected String tags;
+    protected LocalDate postedDate;
     ArrayList<Profile> likesDidByProfiles = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
 
     public Content(String caption, Profile profile, int contentid, LocalDate postedDate) {
         this.caption = caption;
-        Profile = profile;
+        this.profile = profile;
         this.contentid = contentid;
         this.postedDate = postedDate;
     }
@@ -28,11 +29,11 @@ public class Content {
     }
 
     public Profile getProfile() {
-        return Profile;
+        return profile;
     }
 
     public void setProfile(Profile Profile) {
-        this.Profile = Profile;
+        this.profile = Profile;
     }
 
     public int getContentId() {
@@ -49,6 +50,14 @@ public class Content {
 
     public void setLikes() {
         likes++;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public ArrayList<Profile> likesDidByProfiles() {
@@ -75,9 +84,56 @@ public class Content {
         this.postedDate = postedDate;
     }
 
+    public int getContentid() {
+        return contentid;
+    }
+
+    public void setContentid(int contentid) {
+        this.contentid = contentid;
+    }
+
+    public void like(Profile profilewhoIsLikingThePost) {
+        this.setLikes();
+        this.likesDidByProfiles.add(profilewhoIsLikingThePost);
+    }
+
+    public void comment(Profile profilewhoIsCommentingThePost, String comments) {
+        Comment comment = new Comment(profilewhoIsCommentingThePost, comments);
+        this.setComments(comment);
+    }
+
+    public void delete() {
+        if (this.profile.posts.contains(this)) {
+            this.profile.posts.remove(this);
+            this.profile.decrementCountOfContents();
+            for (Profile profile : this.getProfile().following) {
+                profile.getFeed().posts.remove(this);
+            }   
+        } else if (this.profile.reels.contains(this)) {
+            this.profile.reels.remove(this);
+            this.profile.decrementCountOfContents();
+            for (Profile profile : this.getProfile().following) {
+                profile.getFeed().posts.remove(this);
+            }
+        }
+    }
+
+    public void editContent(String caption) {
+            this.setCaption(caption);
+    }
+
+    public boolean share(Profile profileToWhichSharing) {
+        profileToWhichSharing.getInbox().contents.add(this);
+        return true;
+    }
+
+    public void addTag(String tag) {
+        this.setTags(tag);
+    }
+
     @Override
     public String toString() {
-        return "Content [Profile=" + Profile.getProfileName() + ", caption=" + caption + ", contentid=" + contentid
+        return "Content [Profile=" + profile.getProfileName() + ", caption=" + caption + ", contentid=" + contentid
                 + ", likes=" + likes + ", comments=" + comments + "]";
     }
 }

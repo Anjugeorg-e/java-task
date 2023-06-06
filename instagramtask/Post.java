@@ -4,34 +4,40 @@ import java.time.LocalDate;
 
 public class Post extends Content {
 
-    private String imageUrl;
-    private String tags;
+    private String contentUrl;
 
-    public Post(String imageUrl, String caption, Profile Profile, int contentid, LocalDate postedDate) {
+    public Post(String contentUrl, String caption, Profile Profile, int contentid, LocalDate postedDate) {
         super(caption, Profile, contentid, postedDate);
-        this.imageUrl = imageUrl;
+        this.contentUrl = contentUrl;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getContentUrl() {
+        return contentUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public boolean setTags(String tags) {
-        this.tags = tags;
+    public boolean uploadPost() {
+        for (Post post : this.getProfile().posts) {
+            if (post.getContentId() == this.getContentId()) {
+                return false;
+            }
+        }
+        this.getProfile().posts.add(this);
+        this.getProfile().incrementCountOfContents();
+        for (Profile profile : this.getProfile().following) {
+            profile.getFeed().posts.add(this);
+        }
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "Post [ Profile=" + super.getProfile().getprofileName() + ", imageUrl=" + imageUrl+  ", caption=" + super.getCaption() + ", contentId=" +super.getContentId()+ ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ", tags=" + this.getTags()+ ", postedDate= " + super.getPostedDate() + "]";
+        return "Post [ Profile=" + super.getProfile().getprofileName() + ", contentUrl=" + contentUrl + ", caption="
+                + super.getCaption() + ", contentId=" + super.getContentId() + ", likes=" + super.getLikes()
+                + ", comments=" + super.getComments() + ", tags=" + this.getTags() + ", postedDate= "
+                + super.getPostedDate() + "]";
     }
-    
 }

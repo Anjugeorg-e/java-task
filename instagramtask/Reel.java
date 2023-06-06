@@ -2,7 +2,7 @@ package instagramtask;
 
 import java.time.LocalDate;
 
-public class Reel extends Content{
+public class Reel extends Content {
 
     private String videoUrl;
     private int views;
@@ -24,12 +24,30 @@ public class Reel extends Content{
         return views;
     }
 
-    public void setView(){
+    public void setView(Profile profileViewingTheReel) {
         views += 1;
+    }
+
+    public boolean uploadReel() {
+        for (Reel reel : this.getProfile().reels) {
+            if (reel.getContentId() == this.getContentId()) {
+                return false;
+            }
+        }
+        this.getProfile().reels.add(this);
+        this.getProfile().incrementCountOfContents();
+        for (Profile profile : this.getProfile().following) {
+            profile.getFeed().reels.add(this);
+
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Reel [ Profile=" + super.getProfile().getprofileName() + ", videoUrl=" + videoUrl +  ", caption=" + super.getCaption() + ", ContentId=" +super.getContentId()+  ", views=" + views + ", likes=" + super.getLikes()+ ", comments=" +super.getComments()+ ",postedDate=" + super.getPostedDate()+"]";
+        return "Reel [ Profile=" + super.getProfile().getprofileName() + ", videoUrl=" + videoUrl + ", caption="
+                + super.getCaption() + ", ContentId=" + super.getContentId() + ", views=" + views + ", likes="
+                + super.getLikes() + ", tags=" + this.getTags() + ", comments=" + super.getComments() + ",postedDate="
+                + super.getPostedDate() + "]";
     }
 }

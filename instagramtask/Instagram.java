@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Instagram {
 
-    ArrayList<Profile>instagramAccounts = new ArrayList<>();
+    ArrayList<Profile>instagramProfiles = new ArrayList<>();
     ArrayList<User>users = new ArrayList<>();
 
     public ArrayList<Profile> getInstagramAccounts() {
-        return instagramAccounts;
+        return instagramProfiles;
     }
 
-    public void setInstagramAccounts(ArrayList<Profile> instagramAccounts) {
-        this.instagramAccounts = instagramAccounts;
+    public void setInstagramAccounts(ArrayList<Profile> instagramProfiles) {
+        this.instagramProfiles = instagramProfiles;
     }
 
     public ArrayList<User> getUsers() {
@@ -29,6 +29,6 @@ public class Instagram {
     
     @Override
     public String toString() {
-        return "Instagram [instagramAccounts=" + instagramAccounts + "]";
+        return "Instagram [instagramProfiles=" + instagramProfiles + "]";
     }
 }

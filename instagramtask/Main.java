@@ -22,7 +22,7 @@ public class Main {
         instagram.addUserToInstagram(lucajacob);
         Profile luca = lucajacob.getProfile();
 
-        System.out.println(instagram.instagramAccounts);
+        System.out.println(instagram.instagramProfiles);
 
         sam.follow(anu);
         anu.follow(sam);
@@ -30,51 +30,55 @@ public class Main {
         luca.follow(anu);
         luca.follow(sam);
         sam.follow(luca);
-        sam.acceptFollowRequest(anu);
-        anu.acceptFollowRequest(sam);
-        luca.acceptFollowRequest(anu);
-        sam.acceptFollowRequest(luca);
 
-        sam.createPost("https:flower.jpg", "sunflower!!!", 1, LocalDate.of(2023, 05, 30));
-        sam.createPost("https:puppy.jpg", "puppies", 2, LocalDate.of(2023, 06, 01));
-        sam.createPost("https://sky.jpg", "sky", 3, LocalDate.of(2023, 05, 23));
+        Post samPostOne = new Post("https://car.png", "car...", sam, 1, LocalDate.of(2023, 03, 05));
+        samPostOne.uploadPost();
+        Post samPostTwo = new Post("https:puppy.jpg", "puppies", sam, 2, LocalDate.of(2023, 06, 01));
+        samPostTwo.uploadPost();
+        Post samPostThree = new Post("https:flower.jpg", "flowers", sam, 3, LocalDate.of(2023, 05, 01));
+        samPostThree.uploadPost();
 
-        sam.createReel("https://car.mp4", "road race", 3, LocalDate.of(2023, 06, 01));
-        sam.createReel("https://computer.mp4", "dark series", 4, LocalDate.of(2023, 05, 25));
-        sam.createReel("https://village.mp4", "beautyy", 7, LocalDate.of(2023, 05, 29));
+        Reel samreelOne = new Reel("https://car.mp4", "car..//", sam, 4, LocalDate.of(2023, 05, 05));
+        samreelOne.uploadReel();
+        Reel samreelTwo = new Reel("https://toy.mp4", "toyzz", sam, 5, LocalDate.of(2023, 06, 01));
+        samreelTwo.uploadReel();
 
-        anu.createPost("https://cat.jpg", "cat", 10, LocalDate.of(2023, 06, 02));
-        luca.createPost("https://book.jpg", "java basics", 8, LocalDate.of(2023, 06, 02));
+        Story samStoryOne = new Story("happy birthday", sam, 6, LocalDate.of(2023, 06, 05), "https://happy birthday");
+        samStoryOne.uploadStory();
+        Story samStoryTwo = new Story("new phone", sam, 7, LocalDate.of(2023, 06, 03), "https://iphone14.png");
+        samStoryTwo.uploadStory();
 
-        System.out.println("posts: " + sam.posts);
-        System.out.println("reels: " + sam.reels);
-
-        anu.likeReel(sam, 3);
-        anu.commentReel(sam, 3, "awesome");
-        anu.likePost(sam, 1);
-        anu.commentPost(sam, 1, "wow!!");
-        anu.commentPost(sam, 1, "beautiful..");
-
-        System.out.println("posts: " + sam.posts);
-        System.out.println(anu.getFollowingCount());
-
-        System.out.println("found or not: " + anu.searchProfile("sam_samuel", instagram));
-        sam.addTag("#kerala,#feel the beauty", 1);
-
-        sam.createStory("Happy birthday", "https://birthdaygirl.png", LocalDate.of(2023, 06, 03), 4);
-        sam.createStory("alone!!!", "https:alone.videomp4", LocalDate.of(2023, 06, 04), 5);
-        System.out.println(sam.stories);
-
-        anu.getFeed().addContentsToFeed();
-
-        anu.getFeed().sharePost(sam, 1, "sam_samuel");
-        luca.getFeed().sharePost(sam, 2, "sam_samuel");
-        anu.getFeed().sharePost(sam, 3, "sam_samuel");
         System.out.println();
-        
-        System.out.println(anu.getFeed());
+        samPostOne.like(luca);
+        samPostOne.like(anu);
+        samPostOne.like(sam);
+        samreelOne.like(luca);
+        samPostOne.comment(anu, "good!!");
+        samPostOne.editContent("beautiful life!@!");
+        samreelOne.editContent("wow!!2!!");
         System.out.println();
-        System.out.println(sam.getInbox());
+        samPostOne.comment(luca, "wow..super!!!");
+        samPostThree.comment(anu, "this is so nyz...");
+        samreelOne.comment(luca, "awesome!");
 
+        // samPostOne.delete();
+        // samreelOne.delete();
+
+        samreelOne.setView(luca);
+        samreelOne.setView(anu);
+
+        samPostOne.addTag("#beauty..");
+        samreelOne.addTag("#kerala..#beauty");
+
+        System.out.println("Sam: " + sam.posts);
+        System.out.println("stories:" + sam.stories);
+        System.out.println();
+        System.out.println("Anu's feed: " + anu.getFeed());
+
+        System.out.println();
+
+        samPostOne.share(luca);
+        samreelOne.share(luca);
+        System.out.println(luca.getInbox());
     }
 }
