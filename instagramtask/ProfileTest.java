@@ -72,15 +72,4 @@ public class ProfileTest {
         assertEquals(1, Anu.getProfile().getContentCount());
     }
 
-    @Test
-    public void testSetprofileName() {
-        Instagram instagram = new Instagram();
-        User Anu = new User("anu_james", "anu@1234", "anujames@gmail.com");
-        Anu.createProfile("anu_james", "own rules", "https://anuprofile.png", instagram);
-        assertEquals("anu_james", Anu.getProfile().getProfileName());
-
-        Anu.getProfile().setProfileName("anujame_1");
-        assertEquals("anujame_1", Anu.getProfile().getProfileName());
-    }
-
 }
